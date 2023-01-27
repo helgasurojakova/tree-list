@@ -1,5 +1,5 @@
-import './App.css'
 import { rowsApi } from './api/rowsApi'
+import Header from './components/Header'
 
 function App() {
   const entity = {
@@ -25,11 +25,11 @@ function App() {
 
   return (
     <div className="App">
-      {/* <button onClick={createEntity}>Create entity</button> */}
-      <button onClick={refreshList}>Get rows</button>
+      <Header/>
+      {/* <button onClick={refreshList}>Get rows</button>
       <button onClick={createRow}>Create row</button>
       <button onClick={updateRow}>Update row</button>
-      <button onClick={deleteRow}>Delete row</button>
+      <button onClick={deleteRow}>Delete row</button> */}
     </div>
   );
 }
