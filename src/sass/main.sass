@@ -1,5 +1,7 @@
 $base-color: #27272A
 $base-font-size: 14px
+$base-font-color: #FFF
+$secondary-font-color: #A1A1AA
 $base-line-color: 1px solid #414144
 
 .header 
@@ -8,18 +10,17 @@ $base-line-color: 1px solid #414144
   background-color: $base-color
   display: flex
   border-bottom: $base-line-color
-  .button 
+  .button
     height: 44px
     background-color: $base-color
     font-size: $base-font-size
-    color: #A1A1AA
+    color: $base-font-color
     padding: 13px 3px 14px 3px
     margin-right: 21px
     border: 0
     &-active
       border-bottom: 2px solid #FFF
-      color: #FFF
-
+      color: $base-font-color
 
 %header-icon-button
   background-color: $base-color
@@ -40,3 +41,52 @@ $base-line-color: 1px solid #414144
   margin-right: 18px
   @extend %header-icon-button
 
+.navbar
+  width: 234px
+  height: calc(100vh - 45px)
+  background-color: $base-color
+  border-right: $base-line-color
+
+.navbar-button
+  background-color: $base-color
+  height: 44px
+  border-bottom: $base-line-color
+  color: $secondary-font-color
+  display: flex
+  justify-content: space-between
+  align-items: center
+  font-size: $base-font-size
+  padding: 0px 7px 0px 20px
+
+.navbar-button-title-abbr
+  font-size: 10px
+
+.navbar-button-icon
+  background-image: url('../icons/icon-2.svg')
+  background-repeat: no-repeat
+  background-position: center
+  width: 24px
+  height: 24px
+
+.navbar-button-title
+  display: flex
+  flex-direction: column
+  padding: 8px 0px 8px 0px
+
+.navbar-item
+  height: 32px
+  color: $base-font-color
+  font-size: $base-font-size
+  display: flex
+  align-items: center
+  gap: 14px
+  padding-left: 20px
+  &-active
+    background-color: $secondary-font-color
+
+.navbar-item-icon
+  background-image: url('../icons/icon-3.svg')
+  background-repeat: no-repeat
+  background-position: center
+  width: 24px
+  height: 24px

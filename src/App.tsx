@@ -1,5 +1,6 @@
 import { rowsApi } from './api/rowsApi'
 import Header from './components/Header'
+import Navbar from './components/Navbar'
 
 function App() {
   const entity = {
@@ -26,6 +27,7 @@ function App() {
   return (
     <div className="App">
       <Header/>
+      <Navbar/>
       {/* <button onClick={refreshList}>Get rows</button>
       <button onClick={createRow}>Create row</button>
       <button onClick={updateRow}>Update row</button>
