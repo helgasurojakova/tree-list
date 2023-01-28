@@ -57,55 +57,59 @@ export const Row = (props:RowType) => {
 
   return (
     <div className="row" onDoubleClick={handleEdit}>
-      <div className="row-item">{id}</div>
-      <div className="input-wrapper">
+      <div className="row-icons">{id}</div>
+      <div className="left-inputs-part">
+        <div className="input-wrapper">
+          <input 
+            className={`row-item${isEditable ? ' row-item-active' : ''}`} 
+            value={rowNameValue}
+            onChange={handleChangeRowName}
+            readOnly={!isEditable}
+            onKeyDown={handleKeyDown}
+          />
+        </div>
+      </div>
+      <div className="right-inputs-part">
+        <div className="input-wrapper">
+          <input 
+            className={`row-item${isEditable ? ' row-item-active' : ''}`} 
+            value={salaryValue}
+            onChange={handleChangeSalary}
+            readOnly={!isEditable}
+            type="number"
+            onKeyDown={handleKeyDown}
+          />
+        </div>
+        <div className="input-wrapper">
+          <input 
+            className={`row-item${isEditable ? ' row-item-active' : ''}`} 
+            value={equipmentCostsValue}
+            onChange={handleChangeEquipmentCosts}
+            readOnly={!isEditable}
+            type="number"
+            onKeyDown={handleKeyDown}
+          />
+        </div>
+        <div className="input-wrapper">
         <input 
           className={`row-item${isEditable ? ' row-item-active' : ''}`} 
-          value={rowNameValue}
-          onChange={handleChangeRowName}
-          readOnly={!isEditable}
-          onKeyDown={handleKeyDown}
-        />
-      </div>
-      <div className="input-wrapper">
-        <input 
-          className={`row-item${isEditable ? ' row-item-active' : ''}`} 
-          value={salaryValue}
-          onChange={handleChangeSalary}
-          readOnly={!isEditable}
-          type="number"
-          onKeyDown={handleKeyDown}
-        />
-      </div>
-      <div className="input-wrapper">
-        <input 
-          className={`row-item${isEditable ? ' row-item-active' : ''}`} 
-          value={equipmentCostsValue}
-          onChange={handleChangeEquipmentCosts}
-          readOnly={!isEditable}
-          type="number"
-          onKeyDown={handleKeyDown}
-        />
-      </div>
-      <div className="input-wrapper">
-      <input 
-        className={`row-item${isEditable ? ' row-item-active' : ''}`} 
-        value={overheadsValue}
-        onChange={handleChangeOverheads}
-        readOnly={!isEditable}
-        type="number"
-        onKeyDown={handleKeyDown}
-      />
-      </div>
-      <div className="input-wrapper">
-        <input 
-          className={`row-item${isEditable ? ' row-item-active' : ''}`} 
-          value={estimatedProfitValue}
-          onChange={handleChangeEstimatedProfit}
+          value={overheadsValue}
+          onChange={handleChangeOverheads}
           readOnly={!isEditable}
           type="number"
           onKeyDown={handleKeyDown}
         />
+        </div>
+        <div className="input-wrapper">
+          <input 
+            className={`row-item${isEditable ? ' row-item-active' : ''}`} 
+            value={estimatedProfitValue}
+            onChange={handleChangeEstimatedProfit}
+            readOnly={!isEditable}
+            type="number"
+            onKeyDown={handleKeyDown}
+          />
+        </div>
       </div>
     </div>
   )

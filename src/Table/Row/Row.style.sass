@@ -7,10 +7,11 @@
   border-bottom: $base-border
   display: flex
   align-items: center
+  justify-content: space-between
+  padding-right: 11px
 
 .row-item
-  width: 200px
-  padding-left: 12px
+  width: 100%
   color: $base-font-color
   font-size: $base-font-size
   border: none
@@ -24,5 +25,27 @@
     outline: none
     
 .input-wrapper
-  width: 200px
+  width: 100%
   padding: 12px
+
+.left-inputs-part,
+.right-inputs-part
+  display: flex
+  align-items: center
+  gap: 12px
+
+.left-inputs-part
+  width: 100%
+  margin-right: 12px
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button 
+  -webkit-appearance: none
+  margin: 0
+
+/* Firefox */
+input[type=number] 
+  -moz-appearance: textfield
+
+
