@@ -16,10 +16,6 @@ export const Table = () => {
     rowsApi.getRows(entity.id, entity.rowName).then((data) => setRows(data))
   }, [])
 
-  const createRow = () => {
-    rowsApi.createRow(entity.id)
-  }
-
   const deleteRow = () => {
     rowsApi.deleteRow(entity.id, 25131)
   }

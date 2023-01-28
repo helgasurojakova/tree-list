@@ -27,19 +27,27 @@ export const rowsApi = {
     }
   },
 
-  async createRow(eID: number, parentID?: number) {
+  async createRow(
+      eID: number, 
+      equipmentCosts: number,
+      estimatedProfit: number,
+      overheads: number,
+      rowName: string,
+      salary: number,
+      parentID?: number,
+      ) {
     try {
       const response = await axios.post(`${API}/v1/outlay-rows/entity/${eID}/row/create`, {
-          equipmentCosts: 0,
-          estimatedProfit: 0,
+          equipmentCosts,
+          estimatedProfit,
           machineOperatorSalary: 0,
           mainCosts: 0,
           materials: 0,
           mimExploitation: 0,
-          overheads: 0,
+          overheads,
           parentId: parentID || null,
-          rowName: '',
-          salary: 0,
+          rowName,
+          salary,
           supportCosts: 0,
         }
       )
