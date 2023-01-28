@@ -1,4 +1,4 @@
-import '../sass/main.sass'
+import './Navbar.style.sass'
 
 const navbarItem = (title: string, name?: string) => {
   return (
@@ -9,7 +9,7 @@ const navbarItem = (title: string, name?: string) => {
 )
   }
 
-function Navbar() {
+export const Navbar = () => {
   return (
     <div className="navbar">
       <div className="navbar-button">
@@ -25,4 +25,4 @@ function Navbar() {
     </div>
   )
 }
-export default Navbar
+

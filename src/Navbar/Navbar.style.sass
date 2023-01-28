@@ -1,45 +1,4 @@
-$base-color: #27272A
-$base-font-size: 14px
-$base-font-color: #FFF
-$secondary-font-color: #A1A1AA
-$base-line-color: 1px solid #414144
-
-.header 
-  height: 44px
-  width: 100%
-  background-color: $base-color
-  display: flex
-  border-bottom: $base-line-color
-  .button
-    height: 44px
-    background-color: $base-color
-    font-size: $base-font-size
-    color: $base-font-color
-    padding: 13px 3px 14px 3px
-    margin-right: 21px
-    border: 0
-    &-active
-      border-bottom: 2px solid #FFF
-      color: $base-font-color
-
-%header-icon-button
-  background-color: $base-color
-  background-repeat: no-repeat
-  background-position: center
-  width: 44px
-  height: 44px
-  border: 0
-  padding: 0
-
-.menu-button 
-  background-image: url('../icons/icon.svg')
-  margin-left: 10px
-  @extend %header-icon-button
-
-.return-button 
-  background-image: url('../icons/icon-1.svg')
-  margin-right: 18px
-  @extend %header-icon-button
+@import '../styles/main'
 
 .navbar
   width: 234px

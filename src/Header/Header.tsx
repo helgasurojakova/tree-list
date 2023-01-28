@@ -1,6 +1,6 @@
-import '../sass/main.sass'
+import './Header.style.sass'
 
-function Header() {
+export const Header = () => {
   return (
     <div className="header">
       <button className="menu-button"></button>
@@ -10,4 +10,3 @@ function Header() {
     </div>
   )
 }
-export default Header
