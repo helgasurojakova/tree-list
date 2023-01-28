@@ -48,4 +48,31 @@ input::-webkit-inner-spin-button
 input[type=number] 
   -moz-appearance: textfield
 
+.row-icons-wrapper
+  width: 122px
 
+.row-icons
+  display: flex
+  border-radius: 6px
+  width: fit-content
+  &:hover
+    background-color: #414144
+    .row-icons-delete
+      display: block
+
+
+%row-icons-base
+  background-repeat: no-repeat
+  background-position: center
+  display: block
+  width: 24px
+  height: 24px
+
+.row-icons-add
+  background-image: url('../../icons/icon-5.svg')
+  @extend %row-icons-base
+
+.row-icons-delete
+  background-image: url('../../icons/icon-4.svg')
+  display: none
+  @extend %row-icons-base

@@ -53,11 +53,16 @@ export const Row = (props:RowType) => {
           salaryValue)
         setIsEditable(false)
     }
-}
+  }
 
   return (
     <div className="row" onDoubleClick={handleEdit}>
-      <div className="row-icons">{id}</div>
+      <div className="row-icons-wrapper">
+        <div className="row-icons">
+          <span className="row-icons-add"></span>
+          <span className="row-icons-delete"></span>
+        </div>
+      </div>
       <div className="row-inputs__left-part">
         <div className="row-input-wrapper">
           <input 
