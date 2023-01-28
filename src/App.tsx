@@ -1,6 +1,8 @@
 import { rowsApi } from './api/rowsApi'
 import { Header } from './Header'
 import { Navbar } from './Navbar'
+import { Table } from './Table'
+import './styles/main.sass'
 
 function App() {
   const entity = {
@@ -25,9 +27,12 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div>
       <Header/>
-      <Navbar/>
+      <div className="wrapper">
+        <Navbar/>
+        <Table/>
+      </div>
       {/* <button onClick={refreshList}>Get rows</button>
       <button onClick={createRow}>Create row</button>
       <button onClick={updateRow}>Update row</button>
