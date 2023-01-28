@@ -50,18 +50,26 @@ export const rowsApi = {
     }
   },
 
-  async updateRow(eID: number, rID: number) {
+  async updateRow(
+      eID: number, 
+      rID: number,
+      equipmentCosts: number,
+      estimatedProfit: number,
+      overheads: number,
+      rowName: string,
+      salary: number,
+      ) {
     try {
       const response = await axios.post(`${API}/v1/outlay-rows/entity/${eID}/row/${rID}/update`, {
-          equipmentCosts: 0,
-          estimatedProfit: 0,
+          equipmentCosts,
+          estimatedProfit,
           machineOperatorSalary: 0,
           mainCosts: 0,
           materials: 0,
           mimExploitation: 0,
-          overheads: 0,
-          rowName: '',
-          salary: 0,
+          overheads,
+          rowName,
+          salary,
           supportCosts: 0,
       })
       console.log('updateRow', response.data)
