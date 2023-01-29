@@ -32,15 +32,15 @@ export const Row = (props:RowType) => {
     child,
   })
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>, key: string) => {
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>, key: string) {
     setState((v) => ({...v, [key]: event.target.value}))
   }
 
-  const handleEdit = () => {
+  function handleEdit() {
     setIsEditable((prevState) => !prevState)
   }
 
-  const handleKeyDownUpdate= (event: React.KeyboardEvent<HTMLInputElement>) => {
+  function handleKeyDownUpdate(event: React.KeyboardEvent<HTMLInputElement>) {
     if (event.key === 'Enter') {
         rowsApi.updateRow(
           entity.id, 
@@ -54,7 +54,7 @@ export const Row = (props:RowType) => {
     }
   }
 
-  // For creating new row
+  // Creating a new row
 
   const [createMode, setCreateMode] = useState(false)
 
@@ -66,11 +66,11 @@ export const Row = (props:RowType) => {
     estimatedProfit: 0,
   })
 
-  const handleChangeNewRow = (event: React.ChangeEvent<HTMLInputElement>, key: string) => {
+  function handleChangeNewRow(event: React.ChangeEvent<HTMLInputElement>, key: string) {
     setNewRowState((v) => ({...v, [key]: event.target.value}))
   }
 
-  const handleCreateRow = () => {
+  function handleCreateRow() {
     setCreateMode((prevState) => !prevState)
   }
 
@@ -85,13 +85,13 @@ export const Row = (props:RowType) => {
           newRowState.salary,
           id,
           ).then((data) => {
-            setChildren([...children, data.current])
+            setChildren(children ? [...children, data.current] : [data.current])
           })
         setCreateMode(false)
     }
   }
 
-  // Delete row
+  // Deleting a row
 
   function handleKeyDownDelete() {
     rowsApi.deleteRow(entity.id, id).then(() => setIsDeleted(true))
