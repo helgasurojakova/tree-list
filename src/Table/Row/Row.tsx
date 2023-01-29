@@ -51,41 +51,31 @@ export const Row = (props:RowType) => {
   // For creating new row
   const [createMode, setCreateMode] = useState(false)
 
-  const [newRowName, setNewRowName] = useState('')
-  const [newSalary, setNewSalary] = useState(0)
-  const [newEquipmentCosts, setNewEquipmentCosts] = useState(0)
-  const [newOverheads, setNewOverheads] = useState(0)
-  const [newEstimatedProfit, setNewEstimatedProfit] = useState(0)
+  const [newRowState, setNewRowState] = useState({
+    rowName: '',
+    salary: 0,
+    equipmentCosts: 0,
+    overheads: 0,
+    estimatedProfit: 0,
+  })
+
+  const handleChangeNewRow = (event: React.ChangeEvent<HTMLInputElement>, key: string) => {
+    setNewRowState((state) => ({...state, [key]: event.target.value}))
+  }
 
   const handleCreateRow = () => {
     setCreateMode((prevState) => !prevState)
-  }
-
-  const handleChangeNewRowName = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNewRowName(event.target.value)
-  }
-  const handleChangeNewSalary = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNewSalary(parseInt(event.target.value))
-  }
-  const handleChangeNewEquipmentCosts = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNewEquipmentCosts(parseInt(event.target.value))
-  }
-  const handleChangeNewOverheads = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNewOverheads(parseInt(event.target.value))
-  }
-  const handleChangeNewEstimatedProfit = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNewEstimatedProfit(parseInt(event.target.value))
   }
 
   const handleKeyDownCreate= (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
         rowsApi.createRow(
           entity.id, 
-          newEquipmentCosts, 
-          newEstimatedProfit, 
-          newOverheads, 
-          newRowName, 
-          newSalary,
+          newRowState.equipmentCosts, 
+          newRowState.estimatedProfit, 
+          newRowState.overheads, 
+          newRowState.rowName, 
+          newRowState.salary,
           id,
           )
         setCreateMode(false)
@@ -170,8 +160,8 @@ export const Row = (props:RowType) => {
         <div className="row-input-wrapper">
           <input 
             className="row-input row-input-active"
-            value={newRowName}
-            onChange={handleChangeNewRowName}
+            value={newRowState.rowName}
+            onChange={(event) => handleChangeNewRow(event, 'rowName')}
             onKeyDown={handleKeyDownCreate}
           />
         </div>
@@ -180,8 +170,8 @@ export const Row = (props:RowType) => {
         <div className="row-input-wrapper">
           <input 
             className="row-input row-input-active"
-            value={newSalary}
-            onChange={handleChangeNewSalary}
+            value={newRowState.salary}
+            onChange={(event) => handleChangeNewRow(event, 'salary')}
             type="number"
             onKeyDown={handleKeyDownCreate}
           />
@@ -189,8 +179,8 @@ export const Row = (props:RowType) => {
         <div className="row-input-wrapper">
           <input 
             className="row-input row-input-active"
-            value={newEquipmentCosts}
-            onChange={handleChangeNewEquipmentCosts}
+            value={newRowState.equipmentCosts}
+            onChange={(event) => handleChangeNewRow(event, 'equipmentCosts')}
             type="number"
             onKeyDown={handleKeyDownCreate}
           />
@@ -198,8 +188,8 @@ export const Row = (props:RowType) => {
         <div className="row-input-wrapper">
         <input 
           className="row-input row-input-active"
-          value={newOverheads}
-          onChange={handleChangeNewOverheads}
+          value={newRowState.overheads}
+          onChange={(event) => handleChangeNewRow(event, 'overheads')}
           type="number"
           onKeyDown={handleKeyDownCreate}
         />
@@ -207,8 +197,8 @@ export const Row = (props:RowType) => {
         <div className="row-input-wrapper">
           <input 
             className="row-input row-input-active"
-            value={newEstimatedProfit}
-            onChange={handleChangeNewEstimatedProfit}
+            value={newRowState.estimatedProfit}
+            onChange={(event) => handleChangeNewRow(event, 'estimatedProfit')}
             type="number"
             onKeyDown={handleKeyDownCreate}
           />
