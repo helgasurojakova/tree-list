@@ -71,7 +71,9 @@ export const Row = (props:RowType) => {
   }
 
   function handleCreateRow() {
-    setCreateMode((prevState) => !prevState)
+    if (!isEditable) {
+      setCreateMode((prevState) => !prevState)
+    }
   }
 
   function handleKeyDownCreate(event: React.KeyboardEvent<HTMLInputElement>) {
