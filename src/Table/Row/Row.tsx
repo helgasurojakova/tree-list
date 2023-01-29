@@ -106,7 +106,7 @@ export const Row = (props:RowType) => {
         <div className="row-icons-wrapper">
           {!isEditable ? <div className="row-buttons">
             <button className="row-button-add" onClick={handleCreateRow}></button>
-            <button className="row-button-delete" onClick={handleKeyDownDelete}></button>
+            {!createMode && <button className="row-button-delete" onClick={handleKeyDownDelete}></button>}
             {level}
           </div>
           :
