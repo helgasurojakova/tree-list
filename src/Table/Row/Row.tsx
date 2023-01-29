@@ -104,11 +104,13 @@ export const Row = (props:RowType) => {
       {!isDeleted && 
       <div className="row" onDoubleClick={handleEdit}>
         <div className="row-icons-wrapper">
-          <div className="row-buttons">
+          {!isEditable ? <div className="row-buttons">
             <button className="row-button-add" onClick={handleCreateRow}></button>
             <button className="row-button-delete" onClick={handleKeyDownDelete}></button>
             {level}
           </div>
+          :
+          <span className="row-icon"></span>}
         </div>
         <div className="row-inputs__left-part">
           <div className="row-input-wrapper">
