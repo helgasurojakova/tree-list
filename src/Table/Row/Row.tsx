@@ -21,6 +21,7 @@ export const Row = (props:RowType) => {
 
   const [isEditable, setIsEditable] = useState(false)
   const [children, setChildren] = useState(child)
+  const [isDeleted, setIsDeleted] = useState(false)
 
   const [state, setState] = useState({
     rowName,
@@ -54,7 +55,7 @@ export const Row = (props:RowType) => {
   }
 
   // For creating new row
-  
+
   const [createMode, setCreateMode] = useState(false)
 
   const [newRowState, setNewRowState] = useState({
@@ -93,11 +94,12 @@ export const Row = (props:RowType) => {
   // Delete row
 
   function handleKeyDownDelete() {
-    rowsApi.deleteRow(entity.id, id)
+    rowsApi.deleteRow(entity.id, id).then(() => setIsDeleted(true))
   }
 
   return (
     <>
+      {!isDeleted && 
       <div className="row" onDoubleClick={handleEdit}>
         <div className="row-icons-wrapper">
           <div className="row-buttons">
@@ -160,6 +162,7 @@ export const Row = (props:RowType) => {
           </div>
         </div>
       </div>
+      }
       {createMode && 
       <div className="row" onDoubleClick={handleEdit}>
       <div className="row-icons-wrapper">
