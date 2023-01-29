@@ -12,6 +12,7 @@ export const Row = (props:RowType) => {
     equipmentCosts,
     overheads,
     estimatedProfit,
+    child,
   } = props
 
   const [isEditable, setIsEditable] = useState(false)
@@ -100,6 +101,12 @@ export const Row = (props:RowType) => {
     }
   }
 
+  // Delete row
+
+  const handleKeyDownDelete= () => {
+    rowsApi.deleteRow(entity.id, id)
+  }
+
 
   return (
     <>
@@ -107,7 +114,7 @@ export const Row = (props:RowType) => {
         <div className="row-icons-wrapper">
           <div className="row-icons">
             <span className="row-icons-add" onClick={handleCreateRow}></span>
-            <span className="row-icons-delete"></span>
+            <span className="row-icons-delete" onClick={handleKeyDownDelete}></span>
           </div>
         </div>
         <div className="row-inputs__left-part">
@@ -216,7 +223,24 @@ export const Row = (props:RowType) => {
           />
         </div>
       </div>
-    </div>
+      </div>
+      }
+      {child && child.map((el) => {return (<Row
+          key={el.id}
+          equipmentCosts={el.equipmentCosts}
+          estimatedProfit={el.estimatedProfit}
+          id={el.id}
+          machineOperatorSalary={el.machineOperatorSalary}
+          mainCosts={el.mainCosts}
+          materials={el.materials}
+          mimExploitation={el.mimExploitation}
+          overheads={el.overheads}
+          rowName={el.rowName}
+          salary={el.salary}
+          supportCosts={el.supportCosts}
+          total={el.total}
+          child={el.child}/>)
+          })
       }
     </>
   )

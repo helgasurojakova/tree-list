@@ -16,9 +16,6 @@ export const Table = () => {
     rowsApi.getRows(entity.id, entity.rowName).then((data) => setRows(data))
   }, [])
 
-  const deleteRow = () => {
-    rowsApi.deleteRow(entity.id, 25131)
-  }
   return (
     <div className="table">
       <div className="table-header">
@@ -36,11 +33,9 @@ export const Table = () => {
           rowName={el.rowName}
           salary={el.salary}
           supportCosts={el.supportCosts}
-          total={el.total}/>)
+          total={el.total}
+          child={el.child}/>)
           })}
-        {/* <button onClick={refreshList}>Get rows</button>
-        <button onClick={createRow}>Create row</button>
-        <button onClick={deleteRow}>Delete row</button> */}
       </div>
     </div>
   )

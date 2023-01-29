@@ -1,5 +1,4 @@
 export type RowType = {
-  child?: RowType[]
   equipmentCosts: number
   estimatedProfit: number
   id: number
@@ -12,4 +11,5 @@ export type RowType = {
   salary: number
   supportCosts:  number
   total: number
+  child?: RowType[]
 }

@@ -5,10 +5,10 @@ const API = 'http://185.244.172.108:8081'
 export const rowsApi = {
   async createEntity() {
     try {
-      const response = await axios.post(`${API}/v1/outlay-rows/entity/create`);
-      return response.data.id;
+      const response = await axios.post(`${API}/v1/outlay-rows/entity/create`)
+      return response.data.id
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Error:', error)
     }
   },
 
@@ -23,7 +23,7 @@ export const rowsApi = {
       console.log('getRows', response.data)
       return response.data
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error:', error)
     }
   },
 
@@ -54,7 +54,7 @@ export const rowsApi = {
       console.log('createRow', response.data)
       return response.data
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error:', error)
     }
   },
 
@@ -83,7 +83,7 @@ export const rowsApi = {
       console.log('updateRow', response.data)
       return response.data
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error:', error)
     }
   },
 
@@ -93,7 +93,45 @@ export const rowsApi = {
       console.log('deleteRow', response.data)
       return response.data
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error:', error)
     }
   },
+
+  // async recalculateRow(
+  //     eID: number,
+  //     rID: number,
+  //     equipmentCosts: number,
+  //     estimatedProfit: number,
+  //     machineOperatorSalary: number,
+  //     mainCosts: number,
+  //     materials: number,
+  //     mimExploitation: number,
+  //     overheads: number,
+  //     rowName: string,
+  //     salary: number,
+  //     supportCosts: number,
+  //     parentId?: number,
+  //   ) {
+  //   try {
+  //     const response = await axios.get(`${API}/v1/outlay-rows/entity/${eID}/row/${rID}`, {
+  //       data: {
+  //         equipmentCosts,
+  //         estimatedProfit,
+  //         machineOperatorSalary,
+  //         mainCosts,
+  //         materials,
+  //         mimExploitation,
+  //         overheads,
+  //         parentId: parentId || null,
+  //         rowName,
+  //         salary,
+  //         supportCosts,
+  //       }
+  //     })
+  //     console.log('recalculateRow', response.data)
+  //     return response.data
+  //   } catch (error) {
+  //     console.error('Error:', error)
+  //   }
+  // }
 }
