@@ -166,6 +166,7 @@ export const Row = (props:RowType) => {
         </div>
       </div>
       }
+      {children && children.map((el) => {return (<Row row={el} parentId={id} key={el.id} level={level + 1}/>)})}
       {createMode && 
       <div className="row" onDoubleClick={handleEdit}>
       <div className="row-icons-wrapper">
@@ -220,7 +221,6 @@ export const Row = (props:RowType) => {
       </div>
       </div>
       }
-      {children && children.map((el) => {return (<Row row={el} parentId={id} key={el.id} level={level + 1}/>)})}
     </>
   )
 }
