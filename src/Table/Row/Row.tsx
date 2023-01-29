@@ -6,13 +6,17 @@ import { entity } from '../Table'
 
 export const Row = (props:RowType) => {
   const {
-    id,
-    rowName,
-    salary,
-    equipmentCosts,
-    overheads,
-    estimatedProfit,
-    child,
+    row: {
+      id,
+      rowName,
+      salary,
+      equipmentCosts,
+      overheads,
+      estimatedProfit,
+      child,
+    },
+    level,
+    parentId,
   } = props
 
   const [isEditable, setIsEditable] = useState(false)
@@ -206,23 +210,7 @@ export const Row = (props:RowType) => {
       </div>
       </div>
       }
-      {child && child.map((el) => {return (<Row
-          key={el.id}
-          equipmentCosts={el.equipmentCosts}
-          estimatedProfit={el.estimatedProfit}
-          id={el.id}
-          machineOperatorSalary={el.machineOperatorSalary}
-          mainCosts={el.mainCosts}
-          materials={el.materials}
-          mimExploitation={el.mimExploitation}
-          overheads={el.overheads}
-          rowName={el.rowName}
-          salary={el.salary}
-          supportCosts={el.supportCosts}
-          total={el.total}
-          child={el.child}/>)
-          })
-      }
+      {child && child.map((el) => {return (<Row row={el} parentId={id} key={el.id} level={level + 1}/>)})}
     </>
   )
 }

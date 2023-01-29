@@ -1,5 +1,5 @@
 import './Table.style.sass'
-import { Row, RowType } from './Row'
+import { Row, RowDataType } from './Row'
 import { rowsApi } from './Table.sevice'
 import { useEffect, useState } from 'react'
 
@@ -10,7 +10,7 @@ export const entity = {
 
 export const Table = () => {
 
-  const [rows, setRows] = useState<RowType[]>([])
+  const [rows, setRows] = useState<RowDataType[]>([])
 
   useEffect(() => {
     rowsApi.getRows(entity.id, entity.rowName).then((data) => setRows(data))
@@ -20,22 +20,7 @@ export const Table = () => {
     <div className="table">
       <div className="table-header">
         <div className="table-header-title">Item 2</div>
-        {rows.map(el => {return (<Row
-          key={el.id}
-          equipmentCosts={el.equipmentCosts}
-          estimatedProfit={el.estimatedProfit}
-          id={el.id}
-          machineOperatorSalary={el.machineOperatorSalary}
-          mainCosts={el.mainCosts}
-          materials={el.materials}
-          mimExploitation={el.mimExploitation}
-          overheads={el.overheads}
-          rowName={el.rowName}
-          salary={el.salary}
-          supportCosts={el.supportCosts}
-          total={el.total}
-          child={el.child}/>)
-          })}
+        {rows.map(el => {return (<Row row={el} parentId={null} key={el.id} level={1}/>)})}
       </div>
     </div>
   )

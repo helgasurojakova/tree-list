@@ -96,42 +96,4 @@ export const rowsApi = {
       console.error('Error:', error)
     }
   },
-
-  // async recalculateRow(
-  //     eID: number,
-  //     rID: number,
-  //     equipmentCosts: number,
-  //     estimatedProfit: number,
-  //     machineOperatorSalary: number,
-  //     mainCosts: number,
-  //     materials: number,
-  //     mimExploitation: number,
-  //     overheads: number,
-  //     rowName: string,
-  //     salary: number,
-  //     supportCosts: number,
-  //     parentId?: number,
-  //   ) {
-  //   try {
-  //     const response = await axios.get(`${API}/v1/outlay-rows/entity/${eID}/row/${rID}`, {
-  //       data: {
-  //         equipmentCosts,
-  //         estimatedProfit,
-  //         machineOperatorSalary,
-  //         mainCosts,
-  //         materials,
-  //         mimExploitation,
-  //         overheads,
-  //         parentId: parentId || null,
-  //         rowName,
-  //         salary,
-  //         supportCosts,
-  //       }
-  //     })
-  //     console.log('recalculateRow', response.data)
-  //     return response.data
-  //   } catch (error) {
-  //     console.error('Error:', error)
-  //   }
-  // }
 }
