@@ -20,6 +20,7 @@ export const Row = (props:RowType) => {
   } = props
 
   const [isEditable, setIsEditable] = useState(false)
+  const [children, setChildren] = useState(child)
 
   const [state, setState] = useState({
     rowName,
@@ -31,7 +32,7 @@ export const Row = (props:RowType) => {
   })
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>, key: string) => {
-    setState((state) => ({...state, [key]: event.target.value}))
+    setState((v) => ({...v, [key]: event.target.value}))
   }
 
   const handleEdit = () => {
@@ -53,6 +54,7 @@ export const Row = (props:RowType) => {
   }
 
   // For creating new row
+  
   const [createMode, setCreateMode] = useState(false)
 
   const [newRowState, setNewRowState] = useState({
@@ -64,14 +66,14 @@ export const Row = (props:RowType) => {
   })
 
   const handleChangeNewRow = (event: React.ChangeEvent<HTMLInputElement>, key: string) => {
-    setNewRowState((state) => ({...state, [key]: event.target.value}))
+    setNewRowState((v) => ({...v, [key]: event.target.value}))
   }
 
   const handleCreateRow = () => {
     setCreateMode((prevState) => !prevState)
   }
 
-  const handleKeyDownCreate= (event: React.KeyboardEvent<HTMLInputElement>) => {
+  function handleKeyDownCreate(event: React.KeyboardEvent<HTMLInputElement>) {
     if (event.key === 'Enter') {
         rowsApi.createRow(
           entity.id, 
@@ -81,25 +83,27 @@ export const Row = (props:RowType) => {
           newRowState.rowName, 
           newRowState.salary,
           id,
-          )
+          ).then((data) => {
+            setChildren([...children, data.current])
+          })
         setCreateMode(false)
     }
   }
 
   // Delete row
 
-  const handleKeyDownDelete= () => {
+  function handleKeyDownDelete() {
     rowsApi.deleteRow(entity.id, id)
   }
-
 
   return (
     <>
       <div className="row" onDoubleClick={handleEdit}>
         <div className="row-icons-wrapper">
-          <div className="row-icons">
-            <span className="row-icons-add" onClick={handleCreateRow}></span>
-            <span className="row-icons-delete" onClick={handleKeyDownDelete}></span>
+          <div className="row-buttons">
+            <button className="row-button-add" onClick={handleCreateRow}></button>
+            <button className="row-button-delete" onClick={handleKeyDownDelete}></button>
+            {level}
           </div>
         </div>
         <div className="row-inputs__left-part">
@@ -210,7 +214,7 @@ export const Row = (props:RowType) => {
       </div>
       </div>
       }
-      {child && child.map((el) => {return (<Row row={el} parentId={id} key={el.id} level={level + 1}/>)})}
+      {children && children.map((el) => {return (<Row row={el} parentId={id} key={el.id} level={level + 1}/>)})}
     </>
   )
 }

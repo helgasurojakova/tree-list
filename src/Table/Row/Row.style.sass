@@ -51,28 +51,32 @@ input[type=number]
 .row-icons-wrapper
   width: 122px
 
-.row-icons
+.row-buttons
   display: flex
   border-radius: 6px
   width: fit-content
   &:hover
     background-color: #414144
-    .row-icons-delete
+    .row-button-delete
       display: block
 
 
-%row-icons-base
+%row-button-base
   background-repeat: no-repeat
   background-position: center
   display: block
   width: 24px
   height: 24px
+  background-color: transparent
+  border: none
+  color: inherit
+  cursor: pointer
 
-.row-icons-add
+.row-button-add
   background-image: url('../../icons/icon-5.svg')
-  @extend %row-icons-base
+  @extend %row-button-base
 
-.row-icons-delete
+.row-button-delete
   background-image: url('../../icons/icon-4.svg')
   display: none
-  @extend %row-icons-base
+  @extend %row-button-base

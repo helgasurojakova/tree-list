@@ -11,7 +11,7 @@ export type RowDataType = {
   salary: number
   supportCosts:  number
   total: number
-  child?: RowDataType[]
+  child: RowDataType[]
 }
 
 export type RowType = {
