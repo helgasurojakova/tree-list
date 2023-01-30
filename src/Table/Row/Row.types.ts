@@ -18,4 +18,5 @@ export type RowType = {
   row: RowDataType
   parentId: null | number
   level: number
+  onDelete?: () => void
 }

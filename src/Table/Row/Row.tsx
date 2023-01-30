@@ -16,7 +16,7 @@ export const Row = (props:RowType) => {
       child,
     },
     level,
-    parentId,
+    onDelete,
   } = props
 
   const [isEditable, setIsEditable] = useState(false)
@@ -96,7 +96,12 @@ export const Row = (props:RowType) => {
   // Deleting a row
 
   function handleKeyDownDelete() {
-    rowsApi.deleteRow(entity.id, id).then(() => setIsDeleted(true))
+    rowsApi.deleteRow(entity.id, id).then(() => {
+      setIsDeleted(true)
+      if (onDelete) {
+        onDelete()
+      }
+    })
   }
 
   return (

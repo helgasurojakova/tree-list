@@ -34,7 +34,7 @@ export const rowsApi = {
       overheads: number,
       rowName: string,
       salary: number,
-      parentID?: number,
+      parentID: number | null,
       ) {
     try {
       const response = await axios.post(`${API}/v1/outlay-rows/entity/${eID}/row/create`, {
@@ -45,7 +45,7 @@ export const rowsApi = {
           materials: 0,
           mimExploitation: 0,
           overheads,
-          parentId: parentID || null,
+          parentId: parentID,
           rowName,
           salary,
           supportCosts: 0,
