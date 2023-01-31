@@ -24,11 +24,11 @@ export const Table = () => {
     estimatedProfit: 0,
   })
 
-  function handleChangeNewRow(event: React.ChangeEvent<HTMLInputElement>, key: string) {
+  const  handleChangeNewRow = (event: React.ChangeEvent<HTMLInputElement>, key: string) => {
     setNewRowState((v) => ({...v, [key]: event.target.value}))
   }
 
-  function handleKeyDownCreate(event: React.KeyboardEvent<HTMLInputElement>) {
+  const handleKeyDownCreate = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
         rowsApi.createRow(
           entity.id, 
@@ -44,7 +44,7 @@ export const Table = () => {
     }
   }
 
-  function handleDelete() {
+  const handleDelete = () => {
     setRows([])
   }
 

@@ -32,15 +32,15 @@ export const Row = (props:RowType) => {
     child,
   })
 
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>, key: string) {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>, key: string) => {
     setState((v) => ({...v, [key]: event.target.value}))
   }
 
-  function handleEdit() {
+  const handleEdit = () => {
     setIsEditable((prevState) => !prevState)
   }
 
-  function handleKeyDownUpdate(event: React.KeyboardEvent<HTMLInputElement>) {
+  const handleKeyDownUpdate = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
         rowsApi.updateRow(
           entity.id, 
@@ -66,17 +66,17 @@ export const Row = (props:RowType) => {
     estimatedProfit: 0,
   })
 
-  function handleChangeNewRow(event: React.ChangeEvent<HTMLInputElement>, key: string) {
+  const handleChangeNewRow = (event: React.ChangeEvent<HTMLInputElement>, key: string) => {
     setNewRowState((v) => ({...v, [key]: event.target.value}))
   }
 
-  function handleCreateRow() {
+  const handleCreateRow = () => {
     if (!isEditable) {
       setCreateMode((prevState) => !prevState)
     }
   }
 
-  function handleKeyDownCreate(event: React.KeyboardEvent<HTMLInputElement>) {
+  const handleKeyDownCreate = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
         rowsApi.createRow(
           entity.id, 
@@ -95,7 +95,7 @@ export const Row = (props:RowType) => {
 
   // Deleting a row
 
-  function handleKeyDownDelete() {
+  const handleKeyDownDelete = () => {
     rowsApi.deleteRow(entity.id, id).then(() => {
       setIsDeleted(true)
       if (onDelete) {
